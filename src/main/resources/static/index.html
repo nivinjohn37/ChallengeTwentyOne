@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21 Challenge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="container">
+    <h1>21 Challenge</h1>
+    <div>
+        <label for="playerName">Enter your name:</label>
+        <input type="text" id="playerName">
+        <button onclick="joinGame()">Join Game</button>
+    </div>
+    <div id="gameControls" style="display:none;">
+        <div id="random-number">Random Number: -</div>
+        <div id="score">Score: 0</div>
+        <button onclick="generateNumber()">Generate Number</button>
+        <button onclick="lockScore()">Lock Score</button>
+    </div>
+    <div id="status"></div>
+    <div id="winner"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
