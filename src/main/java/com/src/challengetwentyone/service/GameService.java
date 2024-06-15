@@ -53,7 +53,12 @@ public class GameService {
         }
 
         playerLocked.put(player, true);
+        boolean allTrue = playerJoined.values().stream().allMatch(Boolean::booleanValue);
+        if (allTrue) {
+            messagingTemplate.convertAndSend("/topic/winner", getWinner());
+        }
         messagingTemplate.convertAndSend("/topic/scores", getPlayerScores());
+
     }
 
 
@@ -66,5 +71,14 @@ public class GameService {
         playerLocked.clear();
         playerJoined.clear();
     }
+
+    public String getWinner() {
+        return playerScores.entrySet().stream()
+                .filter(entry -> entry.getValue() > 0 && entry.getValue() <= 21)
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse("No Winner");
+    }
+
 }
 

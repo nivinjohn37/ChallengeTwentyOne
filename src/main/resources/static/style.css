@@ -1,23 +1,72 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    animation: flipInX 1s ease-out;
+}
+
+@keyframes flipInX {
+    0% {
+        transform: rotateX(-90deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+.box {
+    margin: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f94144;
+    color: #f9c74f;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-box {
+    background-color: #f8961e;
+}
+
+.button-box {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    gap: 10px;
 }
-#container {
-    text-align: center;
+
+.input-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
-#random-number {
-    font-size: 2em;
-    margin: 20px;
+
+.result-box {
+    background-color: #90be6d;
 }
+
+#random-number,
 #score {
-    font-size: 1.5em;
-    margin: 20px;
+    font-size: 2em;
+    margin: 10px 0;
 }
-button {
-    padding: 10px 20px;
-    font-size: 1em;
-    margin: 10px;
+
+#status,
+#winner {
+    margin-top: 20px;
+    font-size: 1.5em;
+    white-space: pre-line;
 }

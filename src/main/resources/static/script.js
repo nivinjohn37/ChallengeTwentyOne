@@ -19,7 +19,7 @@ function joinGame() {
 
         stompClient.subscribe('/topic/numbers', function (message) {
             var response = JSON.parse(message.body);
-            if (response.playerName === playerName) {
+            if (response.player === playerName) {
                 showNumber(response.randomNumber);
                 showScore(response.score);
                 if (response.locked) {
@@ -31,6 +31,10 @@ function joinGame() {
 
         stompClient.subscribe('/topic/scores', function (message) {
             showScores(JSON.parse(message.body));
+        });
+
+        stompClient.subscribe('/topic/winner', function (message) {
+            showWinner(JSON.parse(message.body));
         });
 
         stompClient.send("/app/join", {}, JSON.stringify({'player': playerName}));
